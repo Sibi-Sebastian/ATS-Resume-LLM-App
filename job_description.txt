@@ -1,0 +1,36 @@
+We are seeking an experienced data scientist with a good understanding of AI and Machine Learning algorithms and its applications for variety of technical problems. In this role, you will get an opportunity to use the cutting edge IBM AI/Automation technologies such as Watsonx and explore several Foundation Models for variety of use cases. You will get to work on AI solutions for various interesting and challenging business problems. Your key responsibilities will be as follows.
+
+
+Proof of Concept (POC) Development: Develop POCs to validate and showcase the feasibility and effectiveness of the proposed AI solutions. Collaborate with development teams to implement and iterate on POCs, ensuring alignment with customer requirements and expectations.
+Help in showcasing the ability of IBM Watsonx Assistant/IBM Watsonx Orchestrate to quickly put up a sequence of skills for a task to be accomplished.
+Documentation and Knowledge Sharing: Document solution architectures, design decisions, implementation details, and lessons learned. Create technical documentation, white papers, and best practice guides. Contribute to internal knowledge sharing initiatives and mentor new team members.
+Industry Trends and Innovation: Stay up to date with the latest trends and advancements in AI, foundation models, and large language models. Evaluate emerging technologies, tools, and frameworks to assess their potential impact on solution design and implementation.
+
+
+Required Technical and Professional Expertise
+
+
+ Technical Skills: 
+At least 5 years of experience in developing AI/ML solutions in Python. 
+Should have strong programming skills, with proficiency in Python and experience with AI frameworks such as TensorFlow, PyTorch, Keras or Hugging Face. Should be able to use libraries such as SciKit Learn, Pandas, Matplotlib, etc.
+Should have an experience in designing and delivering AI solutions with a focus on foundation models, large language models.
+Should have a good experience in data preparation and engineering.
+Should have a good knowledge of relational databases and SQL. Should be able to use NoSQL Databases in managing data for analysis.
+Should be able to follow the Agile methodology of development along with the knowledge of tools like Github.
+ Soft Skills: 
+Should have excellent interpersonal and communication skills. 
+Should be able to engage with stakeholders and team for analysis and implementation. 
+Should be able to learn continuously and stay updated with advancements in the field of AI.
+
+
+Preferred Technical And Professional Expertise
+
+
+Experience in setting up web services using Flask, Django, FastAPI, etc.
+Experience in talking to clients and understanding requirements.
+Experience in natural language processing (NLP) and text analytics. 
+Understanding of machine learning and deep learning algorithms.
+Exposure to open source AI libraries.
+Experience with AI and/or data governance.
+Experience in full AI project lifecycle, from prototyping to deployment in production environments.
+Familiarity with cloud platforms (e.g. IBM Cloud, AWS, Azure, GCP) and related services.
