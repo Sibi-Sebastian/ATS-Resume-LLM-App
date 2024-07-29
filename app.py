@@ -10,22 +10,30 @@ from PIL import Image
 import pdf2image
 import google.generativeai as genai
 
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+# Fetch API key from environment variables
+api_key = os.getenv("GOOGLE_API_KEY")
+if not api_key:
+    st.error("API key is not set. Please check your environment variables.")
+else:
+    genai.configure(api_key=api_key)
 
 def get_gemini_response(input, pdf_content, prompt):
-    model=genai.GenerativeModel('gemini-pro-vision')
-    response=model.generate_content([input, pdf_content[0], prompt])
-    return response.text
+    try:
+        model = genai.GenerativeModel('gemini-1.5-flash')  # Corrected model name
+        response = model.generate_content([input, pdf_content[0], prompt])
+        return response.text
+    except Exception as e:
+        st.error(f"An unexpected error occurred: {e}")
 
 def input_pdf_setup(uploaded_file):
     if uploaded_file is not None:
-        images=pdf2image.convert_from_bytes(uploaded_file.read())
+        images = pdf2image.convert_from_bytes(uploaded_file.read())
         
-        first_page=images[0]
+        first_page = images[0]
         
         img_byte_arr = io.BytesIO()
         first_page.save(img_byte_arr, format='JPEG')
-        img_byte_arr=img_byte_arr.getvalue()
+        img_byte_arr = img_byte_arr.getvalue()
         
         pdf_parts = [
             {
@@ -40,15 +48,15 @@ def input_pdf_setup(uploaded_file):
 ## Streamlit App
 st.set_page_config(page_title="ATS Resume Expert")
 st.header("ATS Tracking System")
-input_text=st.text_area("Job Description: ", key="input")
-uploaded_file=st.file_uploader("Upload your resume(PDF)...", type=["pdf"])
+input_text = st.text_area("Job Description: ", key="input")
+uploaded_file = st.file_uploader("Upload your resume (PDF)...", type=["pdf"])
 
 if uploaded_file is not None:
     st.write("PDF Uploaded Successfully")
-        
+
 submit1 = st.button("Tell Me About the Resume")
 submit2 = st.button("How can I improvise my Skills?")
-submit3 = st.button("Precentage match")
+submit3 = st.button("Percentage match")
 
 input_prompt1 = """
 You are an experienced Technical Human Resource manager with expertise in hiring for [target job title/s]. Given the provided resume and the following job description:
@@ -97,28 +105,45 @@ Remember, including relevant keywords can help improve the resume's visibility a
 
 if submit1:
     if uploaded_file is not None:
-        pdf_content = input_pdf_setup(uploaded_file)
-        response = get_gemini_response(input_prompt1, pdf_content, input_text)
-        st.subheader("The Response is")
-        st.write(response)
+        try:
+            pdf_content = input_pdf_setup(uploaded_file)
+            response = get_gemini_response(input_prompt1, pdf_content, input_text)
+            if response:
+                st.subheader("The Response is")
+                st.write(response)
+            else:
+                st.error("No response received from the API.")
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
     else:
         st.write("Please upload the resume")
 
 elif submit2:
     if uploaded_file is not None:
-        pdf_content = input_pdf_setup(uploaded_file)
-        response = get_gemini_response(input_prompt2, pdf_content, input_text)
-        st.subheader("The Response is")
-        st.write(response)
+        try:
+            pdf_content = input_pdf_setup(uploaded_file)
+            response = get_gemini_response(input_prompt2, pdf_content, input_text)
+            if response:
+                st.subheader("The Response is")
+                st.write(response)
+            else:
+                st.error("No response received from the API.")
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
     else:
         st.write("Please upload the resume")
 
-
 elif submit3:
     if uploaded_file is not None:
-        pdf_content = input_pdf_setup(uploaded_file)
-        response = get_gemini_response(input_prompt3, pdf_content, input_text)
-        st.subheader("The Response is")
-        st.write(response)
+        try:
+            pdf_content = input_pdf_setup(uploaded_file)
+            response = get_gemini_response(input_prompt3, pdf_content, input_text)
+            if response:
+                st.subheader("The Response is")
+                st.write(response)
+            else:
+                st.error("No response received from the API.")
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
     else:
         st.write("Please upload the resume")
